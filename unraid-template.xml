@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<Container version="2">
+  <Name>WhatIveBeenUpTo</Name>
+  <Repository>ghcr.io/swimmingnoah/what-ive-been-up-to:latest</Repository>
+  <Registry>https://ghcr.io/swimmingnoah/what-ive-been-up-to</Registry>
+  <Network>bridge</Network>
+  <MyIP/>
+  <Shell>sh</Shell>
+  <Privileged>false</Privileged>
+  <Support>https://github.com/swimmingnoah/what-ive-been-up-to/issues</Support>
+  <Project>https://github.com/swimmingnoah/what-ive-been-up-to</Project>
+  <Overview>Personal site by Noah Nemec — a static page documenting what he's been working on. Served by Nginx.</Overview>
+  <Category>Other:</Category>
+  <WebUI>http://[IP]:[PORT:8080]/</WebUI>
+  <TemplateURL>https://raw.githubusercontent.com/swimmingnoah/what-ive-been-up-to/main/unraid-template.xml</TemplateURL>
+  <Icon>https://raw.githubusercontent.com/swimmingnoah/what-ive-been-up-to/main/site/assets/favicon.svg</Icon>
+  <ExtraParams>--restart unless-stopped</ExtraParams>
+  <PostArgs/>
+  <CPUset/>
+  <DateInstalled/>
+  <DonateText/>
+  <DonateLink/>
+  <Description>Static single-page personal site documenting projects, learning, and side builds. Built as an Nginx-served HTML/CSS site. No JavaScript framework, no trackers.</Description>
+  <Networking>
+    <Mode>bridge</Mode>
+    <Publish>
+      <Port>
+        <HostPort>8080</HostPort>
+        <ContainerPort>80</ContainerPort>
+        <Protocol>tcp</Protocol>
+      </Port>
+    </Publish>
+  </Networking>
+  <Data/>
+  <Environment/>
+  <Labels/>
+  <Config Name="WebUI Port" Target="80" Default="8080" Mode="tcp" Description="Host port exposing the site" Type="Port" Display="always" Required="true" Mask="false">8080</Config>
+</Container>
