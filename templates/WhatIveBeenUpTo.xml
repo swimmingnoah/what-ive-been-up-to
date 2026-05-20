@@ -12,7 +12,7 @@
   <Overview>Personal site by Noah Nemec — a static page documenting what he's been working on. Served by Nginx.</Overview>
   <Category>Other:</Category>
   <WebUI>http://[IP]:[PORT:8080]/</WebUI>
-  <TemplateURL>https://raw.githubusercontent.com/swimmingnoah/what-ive-been-up-to/main/unraid-template.xml</TemplateURL>
+  <TemplateURL>https://raw.githubusercontent.com/swimmingnoah/what-ive-been-up-to/main/templates/WhatIveBeenUpTo.xml</TemplateURL>
   <Icon>https://raw.githubusercontent.com/swimmingnoah/what-ive-been-up-to/main/site/assets/favicon.svg</Icon>
   <ExtraParams>--restart unless-stopped</ExtraParams>
   <PostArgs/>

@@ -9,18 +9,40 @@ A simple static personal site served by Nginx. Documents what Noah Nemec has bee
 
 ---
 
-## Install on Unraid (recommended)
+## Install on Unraid
+
+There are two ways. Pick one.
+
+### Option A — Add as a Template Repository (recommended)
+
+This makes the template show up in Unraid's "Add Container" list, and Unraid will sync any future template changes automatically.
+
+1. In Unraid, go to **Docker** tab.
+2. Scroll to the bottom and find the **Template Repositories** box.
+3. Paste this URL into an empty row:
+   ```
+   https://github.com/swimmingnoah/what-ive-been-up-to
+   ```
+4. Click **Save**. Unraid clones the repo and discovers any `*.xml` files in `templates/`.
+5. Click **Add Container** at the top.
+6. Open the **Select a template** dropdown — choose **User templates → WhatIveBeenUpTo**.
+7. Adjust the **WebUI Port** if `8080` is already taken, then **Apply**.
+
+### Option B — Paste the template XML URL directly
 
 1. In Unraid, go to **Docker → Add Container**.
-2. In the **Template** dropdown at the top, paste this URL and click the floppy disk to save:
+2. In the **Template** field at the top of the form, paste:
    ```
-   https://raw.githubusercontent.com/swimmingnoah/what-ive-been-up-to/main/unraid-template.xml
+   https://raw.githubusercontent.com/swimmingnoah/what-ive-been-up-to/main/templates/WhatIveBeenUpTo.xml
    ```
-3. Adjust the **WebUI Port** if `8080` is already taken.
-4. Click **Apply**. Unraid pulls `ghcr.io/swimmingnoah/what-ive-been-up-to:latest` and starts the container.
-5. Add a proxy host in NPM pointing at `<unraid-ip>:<webui-port>` to give it a real URL + TLS.
+3. Click off the field — Unraid fetches the XML and fills the form.
+4. Adjust the WebUI Port if needed, then **Apply**.
 
-To update later: hit **Force Update** on the container in Unraid. The Actions workflow rebuilds the image on every push to `main`, so the latest version is always one click away.
+### After install
+
+- Unraid pulls `ghcr.io/swimmingnoah/what-ive-been-up-to:latest` and starts the container.
+- Add a proxy host in NPM pointing at `<unraid-ip>:<webui-port>` to give it a real URL + TLS.
+- To update later: **Force Update** on the container in Unraid. The Actions workflow rebuilds the image on every push to `main`.
 
 > **First time only:** GHCR packages are private by default. After the first successful Actions run, go to your GitHub profile → **Packages → what-ive-been-up-to → Package settings → Change visibility → Public**, otherwise Unraid can't pull without credentials.
 
@@ -58,9 +80,10 @@ Any of `.jpg`, `.png`, `.webp` works — if you use a different extension, updat
 ```
 .
 ├── Dockerfile
-├── docker-compose.yml          # local dev / non-Unraid hosts
-├── unraid-template.xml         # Unraid Community Apps template
-├── .github/workflows/build.yml # builds + pushes image to ghcr.io
+├── docker-compose.yml                    # local dev / non-Unraid hosts
+├── templates/
+│   └── WhatIveBeenUpTo.xml               # Unraid Community Apps template
+├── .github/workflows/build.yml           # builds + pushes image to ghcr.io
 ├── nginx/default.conf
 └── site/
     ├── index.html
